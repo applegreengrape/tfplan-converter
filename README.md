@@ -51,7 +51,7 @@ for windows:
 ```
 env GOOS=windows GOARCH=amd64 go build .
 ```
-for more operating systems check here:
+for more operating systems:
 https://www.digitalocean.com/community/tutorials/how-to-build-go-executables-for-multiple-platforms-on-ubuntu-16-04
 
 # Annotations
