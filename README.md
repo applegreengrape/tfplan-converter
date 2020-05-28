@@ -3,7 +3,7 @@ tf plan converter to json for terraform v11
 
 to convert terraform plan v11 from `terraform.InstanceDiff` to json.
 ```
-./test/tfplan-2
+$ ./tf-converter --tfplan ./test/tfplan-2
 {
     "aws_s3_bucket.b1": {
         "destroy": true,
@@ -46,3 +46,13 @@ for MacOs:
 env GOOS=darwin GOARCH=amd64 go build . 
 
 ```
+
+for windows:
+```
+env GOOS=windows GOARCH=amd64 go build .
+```
+for more operating systems check here:
+https://www.digitalocean.com/community/tutorials/how-to-build-go-executables-for-multiple-platforms-on-ubuntu-16-04
+
+# Annotations
+Thanks to [palantir's tfjson project](https://github.com/palantir/tfjson)
