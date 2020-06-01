@@ -76,17 +76,27 @@ func convertInstanceDiff(out output, path []string, diff *terraformV11.InstanceD
 func main() {
 
 	var plan string
+	var out string
 	flag.StringVar(&plan, "tfplan", "terraform.tfplan", "a string var")
+	flag.StringVar(&out, "output", "console", "console or json")
 
 	flag.Parse()
-
-	fmt.Println(plan)
 
 	json, err := read(plan)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	fmt.Println(json)
+
+	if out == "console"{
+		fmt.Println(json)
+	} else {
+		jsonFile, err := os.Create("tfplan.json")
+		if err != nil {
+			fmt.Fprintln(os.Stderr, err)
+			os.Exit(1)
+		}
+		jsonFile.Write([]byte(json))
+	}
 
 }
